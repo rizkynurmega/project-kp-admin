@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 $title = 'Tambah Produk';
 
 include 'layout/header.php';

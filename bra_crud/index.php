@@ -1,5 +1,17 @@
 <?php 
 
+session_start();
+
+// Membatasi halaman sebelum login
+
+if(!isset($_SESSION["login"])) {
+	echo "<script>
+			alert('Harap Login Terlebih Dahulu');
+			document.location.href = 'login_admin.php';
+			</script>";
+	exit;		
+}
+
 $title = 'Data Produk';
 
 include 'layout/header.php';
@@ -9,9 +21,10 @@ $data_produk = select("SELECT * FROM produk ORDER BY id_produk DESC");
 
 ?>
 
-<div class="container">
+<div class="container mt-3">
 	<h1 class="tabel1"><strong>Data Produk</strong></h1>
-	<div class="box">
+	<hr>
+
 
 <a href="tambah_produk.php" class="btn btn-primary mb-1"><i class="fas fa-plus"></i> Tambah</a>
 
@@ -45,7 +58,7 @@ $data_produk = select("SELECT * FROM produk ORDER BY id_produk DESC");
 </tbody>
 	</table>
 
-</div>
+
 </div> <!-- container -->
 
 <?php include 'layout/footer.php';?>

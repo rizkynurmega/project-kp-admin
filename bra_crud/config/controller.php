@@ -67,3 +67,61 @@ function delete_produk($id_produk)
 
     return mysqli_affected_rows($db);
 }
+
+// fungsi create account
+function create_akun($post)
+{
+    global $db;
+
+    $namaLengkap = strip_tags($post['namaLengkap']);
+	$username = strip_tags($post['username']);
+	$password = strip_tags($post['password']);
+    $role = strip_tags($post['role']);
+
+    // enkripsi password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // query tambah data
+    $query = "INSERT INTO akun_admin VALUES(null,'$namaLengkap','$username','$password','$role')";
+
+    mysqli_query($db, $query);
+
+    return mysqli_affected_rows($db);
+}
+
+// fungsi update account
+function update_akun($post)
+{
+    global $db;
+
+    $userID = strip_tags($post['userID']);
+    $namaLengkap = strip_tags($post['namaLengkap']);
+	$username = strip_tags($post['username']);
+	$password = strip_tags($post['password']);
+    $role = strip_tags($post['role']);
+
+    // enkripsi password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // query edit data
+    $query = "UPDATE akun_admin SET namaLengkap = '$namaLengkap', username = '$username', password = '$password', role = '$role' WHERE userID = $userID";
+
+    mysqli_query($db, $query);
+
+    return mysqli_affected_rows($db);
+}
+
+
+// fungsi delete data akun
+function delete_akun($userID)
+{
+    global $db;
+    
+    // query hapus data
+    $query = "DELETE FROM akun_admin WHERE userID = $userID";
+
+    mysqli_query($db, $query);
+
+    return mysqli_affected_rows($db);
+}
+
