@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jul 2022 pada 13.20
+-- Waktu pembuatan: 06 Jul 2022 pada 06.56
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.1.33
 
@@ -25,22 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `login`
+-- Struktur dari tabel `akun_admin`
 --
 
-CREATE TABLE `login` (
-  `userID` int(10) NOT NULL,
+CREATE TABLE `akun_admin` (
+  `userID` int(11) NOT NULL,
+  `namaLengkap` varchar(100) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `namaLengkap` varchar(100) NOT NULL
+  `role` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `login`
+-- Dumping data untuk tabel `akun_admin`
 --
 
-INSERT INTO `login` (`userID`, `username`, `password`, `namaLengkap`) VALUES
-(1, 'admin', 'admin', 'admin');
+INSERT INTO `akun_admin` (`userID`, `namaLengkap`, `username`, `password`, `role`) VALUES
+(1, 'admin', 'admin', 'admin', '1'),
+(2, 'rizky', 'rizky', 'rizky', '2'),
+(5, 'test123', 'test123', '$2y$10$A4RID/NRe/6UcUS/vGgpMe0l6VA8DszuwY.4Cprumqp', '1'),
+(6, 'rizky123', 'rizky123', '$2y$10$alNmClkKJrk.8PJZcBIOne7fug3objXXfAdzPxZYz5r', '2'),
+(7, '123456', '123456', '$2y$10$SNwsYszDsyl6Q5mpdPNC4OOrxKLqs4HQqCiYvIMI46U', '1');
 
 -- --------------------------------------------------------
 
@@ -76,9 +81,9 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `tipe`, `lokasi`, `gambar`, `d
 --
 
 --
--- Indeks untuk tabel `login`
+-- Indeks untuk tabel `akun_admin`
 --
-ALTER TABLE `login`
+ALTER TABLE `akun_admin`
   ADD PRIMARY KEY (`userID`);
 
 --
@@ -92,10 +97,10 @@ ALTER TABLE `produk`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `login`
+-- AUTO_INCREMENT untuk tabel `akun_admin`
 --
-ALTER TABLE `login`
-  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `akun_admin`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
