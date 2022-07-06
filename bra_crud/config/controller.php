@@ -79,10 +79,10 @@ function create_akun($post)
     $role = strip_tags($post['role']);
 
     // enkripsi password
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     // query tambah data
-    $query = "INSERT INTO akun_admin VALUES(null,'$namaLengkap','$username','$password','$role')";
+    $query = "INSERT INTO `akun_admin` (namaLengkap, username, password, role) VALUES ('$namaLengkap', '$username', '" . md5($password) . "', '$role')";
 
     mysqli_query($db, $query);
 
@@ -104,7 +104,7 @@ function update_akun($post)
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     // query edit data
-    $query = "UPDATE akun_admin SET namaLengkap = '$namaLengkap', username = '$username', password = '$password', role = '$role' WHERE userID = $userID";
+    $query = "UPDATE akun_admin SET namaLengkap = '$namaLengkap', username = '$username', password = '" . md5($password) . "', role = '$role' WHERE userID = $userID";
 
     mysqli_query($db, $query);
 
