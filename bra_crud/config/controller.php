@@ -104,7 +104,8 @@ function update_akun($post)
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     // query edit data
-    $query = "UPDATE akun_admin SET namaLengkap = '$namaLengkap', username = '$username', password = '" . md5($password) . "', role = '$role' WHERE userID = $userID";
+    $query = "UPDATE akun_admin SET namaLengkap = '$namaLengkap', username = '$username', password = '" . md5($password) . "
+    ', role = '$role' WHERE userID = $userID";
 
     mysqli_query($db, $query);
 
