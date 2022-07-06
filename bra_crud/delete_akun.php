@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -13,11 +13,9 @@ if (delete_akun($userID) > 0) {
                 alert('Data Akun Berhasil Dihapus');
                 document.location.href = 'akun_admin.php';
               </script>";
-    }  else {        
+} else {
         echo "<script>
                 alert('Data Akun Gagal Dihapus');
                 document.location.href = 'akun_admin.php';
              </script>";
-    }
-
-?>
+}

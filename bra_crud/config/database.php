@@ -1,5 +1,3 @@
 <?php 
 
-$db = mysqli_connect('localhost', 'root', '', 'bumira');
-
-?>
+$db = mysqli_connect('localhost', 'camieux', 'viper666', 'bumira');

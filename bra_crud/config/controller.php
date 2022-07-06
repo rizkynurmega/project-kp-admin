@@ -6,14 +6,14 @@ function select($query)
     // panggil koneksi database 
     global $db;
 
-    $result = mysqli_query($db, $query); 
+    $result = mysqli_query($db, $query);
     $rows = [];
 
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
 
-        return $rows;
+    return $rows;
 }
 
 // fungsi menambahkan data barang
@@ -21,9 +21,9 @@ function create_produk($post)
 {
     global $db;
 
-	$nama_produk = strip_tags($post['nama_produk']);
-	$tipe = strip_tags($post['tipe']);
-	$lokasi = strip_tags($post['lokasi']);
+    $nama_produk = strip_tags($post['nama_produk']);
+    $tipe = strip_tags($post['tipe']);
+    $lokasi = strip_tags($post['lokasi']);
     $gambar = strip_tags($post['gambar']);
     $deskripsi = strip_tags($post['deskripsi']);
 
@@ -40,13 +40,13 @@ function update_produk($post)
 {
     global $db;
 
-	$id_produk = $post['id_produk'];
+    $id_produk = $post['id_produk'];
     $nama_produk = $post['nama_produk'];
-	$tipe = $post['tipe'];
-	$lokasi = $post['lokasi'];
+    $tipe = $post['tipe'];
+    $lokasi = $post['lokasi'];
     $gambar = $post['gambar'];
     $deskripsi = $post['deskripsi'];
-    
+
     // query ubah data
     $query = "UPDATE produk SET nama_produk = '$nama_produk', tipe = '$tipe', lokasi = '$lokasi', gambar = '$gambar', deskripsi = '$deskripsi' WHERE id_produk = $id_produk";
 
@@ -59,7 +59,7 @@ function update_produk($post)
 function delete_produk($id_produk)
 {
     global $db;
-    
+
     // query hapus data
     $query = "DELETE FROM produk WHERE id_produk = $id_produk";
 
@@ -74,8 +74,8 @@ function create_akun($post)
     global $db;
 
     $namaLengkap = strip_tags($post['namaLengkap']);
-	$username = strip_tags($post['username']);
-	$password = strip_tags($post['password']);
+    $username = strip_tags($post['username']);
+    $password = strip_tags($post['password']);
     $role = strip_tags($post['role']);
 
     // enkripsi password
@@ -96,8 +96,8 @@ function update_akun($post)
 
     $userID = strip_tags($post['userID']);
     $namaLengkap = strip_tags($post['namaLengkap']);
-	$username = strip_tags($post['username']);
-	$password = strip_tags($post['password']);
+    $username = strip_tags($post['username']);
+    $password = strip_tags($post['password']);
     $role = strip_tags($post['role']);
 
     // enkripsi password
@@ -116,7 +116,7 @@ function update_akun($post)
 function delete_akun($userID)
 {
     global $db;
-    
+
     // query hapus data
     $query = "DELETE FROM akun_admin WHERE userID = $userID";
 
@@ -124,4 +124,3 @@ function delete_akun($userID)
 
     return mysqli_affected_rows($db);
 }
-

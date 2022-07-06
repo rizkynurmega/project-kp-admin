@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -13,12 +13,12 @@ if (delete_produk($id_produk) > 0) {
                 alert('Data Produk Berhasil Dihapus');
                 document.location.href = 'index.php';
               </script>";
-    }  else {        
+} else {
         echo "<script>
                 alert('Data Produk Gagal Dihapus');
                 document.location.href = 'index.php';
              </script>";
-    }
+}
 
 ?>
 
